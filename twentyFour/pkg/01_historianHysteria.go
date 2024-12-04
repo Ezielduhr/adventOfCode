@@ -23,13 +23,14 @@ func Zip[T, U any](t []T, u []U) iter.Seq2[T, U] {
 }
 
 type ListCompare struct {
-	FirstList     []int
-	SecondList    []int
-	totalDistance int
+	FirstList       []int
+	SecondList      []int
+	TotalDistance   int
+	TotalSimilarity int
 }
 
 func (lc *ListCompare) CalculateDistance() {
-	lc.totalDistance = 0
+	lc.TotalDistance = 0
 	sort.Ints(lc.FirstList)
 	sort.Ints(lc.SecondList)
 	// Go why u no zip ??
@@ -38,9 +39,28 @@ func (lc *ListCompare) CalculateDistance() {
 
 	for first, second := range zipList {
 		result := first - second
-		lc.totalDistance += int(math.Abs(float64(result)))
+		lc.TotalDistance += int(math.Abs(float64(result)))
 	}
 
+}
+
+func (lc *ListCompare) CalculateSimilarity() {
+	lc.TotalSimilarity = 0
+
+	uniqueArray := make(map[int]int)
+	for _, v := range lc.SecondList {
+		if val, ok := uniqueArray[v]; ok {
+			uniqueArray[v] = val + 1
+		} else {
+			uniqueArray[v] = 1
+		}
+	}
+
+	for _, first := range lc.FirstList {
+		if second, ok := uniqueArray[first]; ok {
+			lc.TotalSimilarity += first * second
+		}
+	}
 }
 
 func (lc *ListCompare) readFromFile(filePath string) {
@@ -71,5 +91,7 @@ func Main() {
 	listCompare := new(ListCompare)
 	listCompare.readFromFile("twentyFour/resources/01_historianHysteria.txt")
 	listCompare.CalculateDistance()
-	println(listCompare.totalDistance)
+	listCompare.CalculateSimilarity()
+	println(listCompare.TotalDistance)
+	println(listCompare.TotalSimilarity)
 }
