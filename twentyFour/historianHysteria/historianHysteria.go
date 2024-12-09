@@ -89,7 +89,7 @@ func (lc *ListCompare) readFromFile(filePath string) {
 
 func Main() {
 	listCompare := new(ListCompare)
-	listCompare.readFromFile("twentyFour/resources/01_historianHysteria.txt")
+	listCompare.readFromFile("twentyFour/historianHysteria/historianHysteria.txt")
 	listCompare.CalculateDistance()
 	listCompare.CalculateSimilarity()
 	println(listCompare.TotalDistance)

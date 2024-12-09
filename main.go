@@ -1,11 +1,10 @@
 package main
 
 import (
-	historianHysteria "adventOfCode/twentyFour/pkg"
+	redNosedReports "adventOfCode/twentyFour/redNosedReports"
 )
 
 func main() {
-	historianHysteria.Main()
+	//historianHysteria.Main()
+	redNosedReports.Main()
 }
-
-//https://adventofcode.com/2024/day/1

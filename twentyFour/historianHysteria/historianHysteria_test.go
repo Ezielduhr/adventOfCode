@@ -9,12 +9,12 @@ import (
 import "context"
 import "github.com/cucumber/godog"
 
-func Test01_historianHysteria(t *testing.T) {
+func TestHistorianHysteria(t *testing.T) {
 	suite := godog.TestSuite{
-		ScenarioInitializer: Initialize01_historianHysteriaScenario,
+		ScenarioInitializer: InitializeHistorianHysteriaScenario,
 		Options: &godog.Options{
 			Format:   "pretty",
-			Paths:    []string{"../features/01_historianHysteria.feature"},
+			Paths:    []string{"historianHysteria.feature"},
 			TestingT: t, // Testing instance that will run subtests.
 		},
 	}
@@ -24,14 +24,14 @@ func Test01_historianHysteria(t *testing.T) {
 	}
 }
 
-func Initialize01_historianHysteriaScenario(ctx *godog.ScenarioContext) {
-
+func InitializeHistorianHysteriaScenario(ctx *godog.ScenarioContext) {
 	ctx.Step(`^there are (.*) and (.*) to compare$`, thereAreFirstListAndSecondListToCompare)
 	ctx.Step(`^I compare the lists for total distance$`, iCompareTheListsForTotalDistance)
 	ctx.Step(`^the totalDistance should equal (.*)$`, theTotalDistanceShouldEqualTotalDistance)
 	ctx.Step(`^I compare the lists for similarity$`, iCompareTheListsForSimilarity)
 	ctx.Step(`^the similarity should equal (.*)$`, theSimilarityShouldEqualSimilarity)
 }
+
 func thereAreFirstListAndSecondListToCompare(ctx context.Context, firstList string, secondList string) (context.Context, error) {
 	var lsCompare ListCompare
 
