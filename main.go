@@ -1,10 +1,11 @@
 package main
 
 import (
-	redNosedReports "adventOfCode/twentyFour/redNosedReports"
+	"adventOfCode/twentyFour/mullItOver"
 )
 
 func main() {
 	//historianHysteria.Main()
-	redNosedReports.Main()
+	//redNosedReports.Main()
+	mullItOver.Main()
 }
