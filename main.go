@@ -1,11 +1,10 @@
 package main
 
-import (
-	"adventOfCode/twentyFour/mullItOver"
-)
+import "adventOfCode/twentyFour/ceresSearch"
 
 func main() {
 	//historianHysteria.Main()
 	//redNosedReports.Main()
-	mullItOver.Main()
+	//mullItOver.Main()
+	ceresSearch.Main()
 }
